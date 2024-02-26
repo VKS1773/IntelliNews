@@ -3,13 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+const osc = ctx.createOscillator();
+osc.connect(ctx.destination);
+console.log(ctx.state);
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+  ctx.resume().then(() => console.log(ctx.state));
+});
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
