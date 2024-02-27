@@ -1,7 +1,6 @@
-import React from "react";
+// import React from "react";
+// const NewsCard = () => {
+//   return <div>News Card</div>;
+// };
 
-const NewsCard = () => {
-  return <div>News Card</div>;
-};
-
-export default NewsCard;
+// export default NewsCard;
