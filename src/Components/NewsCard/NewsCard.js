@@ -10,39 +10,60 @@ import {
 } from "@mui/material";
 const NewsCard = ({
   article: { description, publishedAt, source, title, url, urlToImage },
+  i,
 }) => {
   return (
-    <Card>
-      <CardActionArea>
-        <CardMedia image={urlToImage}>
-          <div>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="h2"
-            ></Typography>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="h2"
-            ></Typography>
-          </div>
-          <Typography gutterBottom variant="h5"></Typography>
-          <CardContent>
-            <Typography
-              variant="body2"
-              color="textSecondary"
-              component="p"
-            ></Typography>
-          </CardContent>
-        </CardMedia>
+    <Card
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        borderBottom: "10px solid white",
+      }}
+    >
+      <CardActionArea href={url} target="_blank">
+        <CardMedia image={urlToImage} sx={{ height: "200px" }}></CardMedia>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "20px",
+          }}
+        >
+          <Typography variant="body2" color="textSecondary" component="h2">
+            {new Date(publishedAt).toDateString()}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="h2">
+            {source.name}
+          </Typography>
+        </div>
+        <Typography
+          gutterBottom
+          variant="h6"
+          style={{
+            padding: "0 16px",
+          }}
+        >
+          {title}
+        </Typography>
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {description}
+          </Typography>
+        </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions
+        style={{
+          padding: "0 16px 8px 16px",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
         <Button size="small" color="primary">
           Learn More
         </Button>
         <Typography variant="h5" color="textSecondary">
-          {article.description}
+          {i + 1}
         </Typography>
       </CardActions>
     </Card>

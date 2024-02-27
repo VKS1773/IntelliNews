@@ -4,7 +4,12 @@ import { Typography, Grid, Grow } from "@mui/material";
 const NewsCards = ({ articles, i }) => {
   return (
     <Grow in>
-      <Grid alignItems="stretch" spacing={3}>
+      <Grid
+        container
+        alignItems="stretch"
+        spacing={2}
+        style={{ padding: "0 5%" }}
+      >
         {articles.map((article, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3} style={{ display: "flex" }}>
             <NewsCard article={article} i={i} />

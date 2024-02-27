@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import NewsCards from "./Components/NewsCards/NewsCards.js";
-import { Button } from "@mui/material";
 
 const alanKey =
   "ecc705bfc0c27cb9f26b571aff795c712e956eca572e1d8b807a3e2338fdd0dc/stage";
@@ -20,7 +19,6 @@ const App = () => {
   return (
     <div>
       <h1>Hello there is a world</h1>
-      <Button>Hii there is button</Button>
       <div>
         <NewsCards articles={newsarticles} />
       </div>
