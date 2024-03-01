@@ -11,6 +11,7 @@ import {
 const NewsCard = ({
   article: { description, publishedAt, source, title, url, urlToImage },
   i,
+  activearticles,
 }) => {
   // const { description, publishedAt, source, title, url, urlToImage } = article;
   return (
@@ -19,7 +20,8 @@ const NewsCard = ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        borderBottom: "10px solid white",
+        borderBottom:
+          activearticles === i ? "10px solid blue" : "10px solid white",
       }}
       i={i}
     >

@@ -7,12 +7,15 @@ const alanKey =
   "ecc705bfc0c27cb9f26b571aff795c712e956eca572e1d8b807a3e2338fdd0dc/stage";
 const App = () => {
   const [newsarticles, setNewsarticles] = useState([]);
+  const [activearticles, setActivearticles] = useState(-1);
   useEffect(() => {
     alanBtn({
       key: alanKey,
       onCommand: ({ command, articles }) => {
-        if (command === "newHeadLines") {
+        if (command === "newHeadlines") {
           setNewsarticles(articles);
+        } else if (command === "highlight") {
+          setActivearticles((prev) => prev + 1);
         }
       },
     });
@@ -37,7 +40,7 @@ const App = () => {
         />
       </div>
       <div>
-        <NewsCards articles={newsarticles} />
+        <NewsCards articles={newsarticles} activearticles={activearticles} />
       </div>
     </div>
   );
