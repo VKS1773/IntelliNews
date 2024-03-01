@@ -12,6 +12,7 @@ const NewsCard = ({
   article: { description, publishedAt, source, title, url, urlToImage },
   i,
 }) => {
+  // const { description, publishedAt, source, title, url, urlToImage } = article;
   return (
     <Card
       style={{
@@ -20,9 +21,14 @@ const NewsCard = ({
         justifyContent: "space-between",
         borderBottom: "10px solid white",
       }}
+      i={i}
     >
       <CardActionArea href={url} target="_blank">
-        <CardMedia image={urlToImage} sx={{ height: "200px" }}></CardMedia>
+        <CardMedia
+          image={urlToImage}
+          sx={{ height: "200px" }}
+          component="img"
+        ></CardMedia>
         <div
           style={{
             display: "flex",

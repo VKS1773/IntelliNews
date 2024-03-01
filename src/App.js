@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import NewsCards from "./Components/NewsCards/NewsCards.js";
-import alanai from "./Components/image/alan-ai.png";
+import alanai from "./Components/image/searchimage.jpg";
 
 const alanKey =
   "ecc705bfc0c27cb9f26b571aff795c712e956eca572e1d8b807a3e2338fdd0dc/stage";
@@ -11,7 +11,7 @@ const App = () => {
     alanBtn({
       key: alanKey,
       onCommand: ({ command, articles }) => {
-        if (command === "newsHeadlines") {
+        if (command === "newHeadLines") {
           setNewsarticles(articles);
         }
       },
@@ -21,15 +21,17 @@ const App = () => {
     <div>
       <div
         style={{
-          width: "40vw",
-          height: "40vh",
-          margin: "20px auto",
-          backgroundColor: "green",
-          borderRadius: 10,
+          maxWidth: "300px",
+          margin: "auto",
+          padding: "20px 20px",
         }}
       >
         <img
-          style={{ width: "80%", height: "80%", margin: "auto" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: 10,
+          }}
           src={alanai}
           alt=" alan-ai logo"
         />
