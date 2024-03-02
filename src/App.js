@@ -8,6 +8,7 @@ const alanKey =
 const App = () => {
   const [newsarticles, setNewsarticles] = useState([]);
   const [activearticles, setActivearticles] = useState(-1);
+  //made readable ai
   useEffect(() => {
     alanBtn({
       key: alanKey,
