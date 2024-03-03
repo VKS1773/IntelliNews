@@ -15,6 +15,7 @@ const App = () => {
       onCommand: ({ command, articles }) => {
         if (command === "newHeadlines") {
           setNewsarticles(articles);
+          setActivearticles(-1);
         } else if (command === "highlight") {
           setActivearticles((prev) => prev + 1);
         }
@@ -41,6 +42,7 @@ const App = () => {
         />
       </div>
       <div>
+        {console.log(newsarticles.length)}
         <NewsCards articles={newsarticles} activearticles={activearticles} />
       </div>
     </div>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect, createRef } from "react";
+
 import {
   Card,
   CardActions,
@@ -8,14 +9,29 @@ import {
   Button,
   Typography,
 } from "@mui/material";
+
 const NewsCard = ({
   article: { description, publishedAt, source, title, url, urlToImage },
   i,
   activearticles,
 }) => {
-  // const { description, publishedAt, source, title, url, urlToImage } = article;
+  const [elRefs, setElRefs] = useState([]);
+  const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
+  useEffect(() => {
+    setElRefs((refs) =>
+      Array(20)
+        .fill()
+        .map((_, j) => refs[j] || createRef())
+    );
+  }, []);
+  useEffect(() => {
+    if (i === activearticles && elRefs[activearticles]) {
+      scrollToRef(elRefs[activearticles]);
+    }
+  }, [i, activearticles, elRefs]);
   return (
     <Card
+      ref={elRefs[i]}
       style={{
         display: "flex",
         flexDirection: "column",
