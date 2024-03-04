@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import NewsCards from "./Components/NewsCards/NewsCards.js";
 import alanai from "./Components/image/searchimage.jpg";
-
+import wordsTonumber from "words-to-numbers";
 const alanKey =
   "ecc705bfc0c27cb9f26b571aff795c712e956eca572e1d8b807a3e2338fdd0dc/stage";
 const App = () => {
@@ -12,12 +12,21 @@ const App = () => {
   useEffect(() => {
     alanBtn({
       key: alanKey,
-      onCommand: ({ command, articles }) => {
-        if (command === "newHeadlines") {
+      onCommand: ({ command, articles, number }) => {
+        if (command === "newHeadLines") {
           setNewsarticles(articles);
           setActivearticles(-1);
         } else if (command === "highlight") {
           setActivearticles((prev) => prev + 1);
+        } else if (command === "open") {
+          const parsedNumber =
+            number.length > 2 ? wordsTonumber(number, { fuzzy: true }) : number;
+          const article = articles[parsedNumber - 1];
+          if (parsedNumber > 20) {
+            console.log("error");
+          } else {
+            window.open(article.url, "_blank");
+          }
         }
       },
     });
@@ -42,7 +51,6 @@ const App = () => {
         />
       </div>
       <div>
-        {console.log(newsarticles.length)}
         <NewsCards articles={newsarticles} activearticles={activearticles} />
       </div>
     </div>
