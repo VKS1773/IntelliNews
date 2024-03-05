@@ -17,6 +17,7 @@ const NewsCard = ({
 }) => {
   const [elRefs, setElRefs] = useState([]);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
+  //save all the chnages
   useEffect(() => {
     setElRefs((refs) =>
       Array(20)
