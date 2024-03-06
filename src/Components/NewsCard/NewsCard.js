@@ -14,6 +14,8 @@ const NewsCard = ({
   article: { description, publishedAt, source, title, url, urlToImage },
   i,
   activearticles,
+
+  /// sjdnnfwrj[rkb p[wkbp ]]
 }) => {
   const [elRefs, setElRefs] = useState([]);
   const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
