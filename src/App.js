@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import NewsCards from "./Components/NewsCards/NewsCards.js";
 import alanai from "./Components/image/searchimage.jpg";
-import wordsTonumber from "words-to-numbers";
-const alanKey =
-  "ecc705bfc0c27cb9f26b571aff795c712e956eca572e1d8b807a3e2338fdd0dc/stage";
+import wordsToNumbers from "words-to-numbers";
+const alanKey = process.env.REACT_APP_ALAN_KEY;
 const App = () => {
   const [newsarticles, setNewsarticles] = useState([]);
   const [activearticles, setActivearticles] = useState(-1);
@@ -19,14 +18,13 @@ const App = () => {
         } else if (command === "highlight") {
           setActivearticles((prev) => prev + 1);
         } else if (command === "open") {
+          // console.log(number);
           const parsedNumber =
-            number.length > 2 ? wordsTonumber(number, { fuzzy: true }) : number;
+            number.length > 2
+              ? wordsToNumbers(number, { fuzzy: true })
+              : number;
           const article = articles[parsedNumber - 1];
-          if (parsedNumber > 20) {
-            console.log("error");
-          } else {
-            window.open(article.url, "_blank");
-          }
+          console.log(article);
         }
       },
     });
